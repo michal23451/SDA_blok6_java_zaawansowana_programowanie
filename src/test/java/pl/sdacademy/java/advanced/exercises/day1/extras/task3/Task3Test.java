@@ -47,13 +47,90 @@ class Task3Test {
     }
 
     @Test
-    void shouldReturnCorrectResultA(){
+    void shouldReturnCorrectResultA() {
         //given
         List<Product> result = new ArrayList<>();
         //when
         result = Task3.pointA(products);
         //then
-        assertThat(result).containsExactlyInAnyOrder(product2,product4);
+        assertThat(result).containsExactlyInAnyOrder(product2, product4);
     }
+
+    @Test
+    void shouldReturnCorrectResultB() {
+        //given
+        List<Product> result = new ArrayList<>();
+        List<Product> expectedResult = List.of(
+                new Product(1L, "AAA", "Computer", 2500 * 0.8),
+                new Product(2L, "BBB", "Computer", 5001 * 0.8),
+                new Product(3L, "CCC", "Computer", 1000 * 0.8),
+                new Product(4L, "DDD", "Computer", 9000 * 0.8),
+                new Product(6L, "FFF", "Computer", 5000 * 0.8)
+        );
+        //when
+        result = Task3.pointB(products);
+        //then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void shouldReturnCorrectResultC() {
+        //given
+        Product result;
+        //when
+        result = Task3.pointC(products);
+        //then
+        assertThat(result.getPrice()).isEqualTo(1000);
+        assertThat(result).isEqualTo(product3);
+    }
+
+    @Test
+    void shouldReturnCorrectResultD() {
+        //given
+        List<Order> result;
+        //when
+        result = Task3.pointD(orders);
+        //then
+        assertThat(result.size()).isEqualTo(3);
+        assertThat(result.get(0)).isEqualTo(order2);
+        assertThat(result.get(1)).isEqualTo(order3);
+        assertThat(result.get(2)).isEqualTo(order4);
+        assertThat(result).containsExactlyInAnyOrder(order3, order2, order4);
+    }
+
+
+    @Test
+    void shouldReturnCorrectResultE() {
+        //given
+        List<Product> result;
+        //when
+        result = Task3.pointE(orders);
+        //then
+        assertThat(result.size()).isEqualTo(5);
+        assertThat(result).containsExactlyInAnyOrder(product1, product2, product3, product4, product5);
+    }
+
+    @Test
+    void shouldReturnCorrectResultF() {
+        //given
+        List<Order> result;
+        //when
+        result = Task3.pointF(orders);
+        //then
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).containsExactlyInAnyOrder(order3, order5);
+    }
+
+    @Test
+    void shouldReturnCorrectResultG() {
+        //given
+        double result;
+        //when
+        result = Task3.pointG(orders);
+        //then
+        assertThat(result).isEqualTo(25501.0);
+    }
+
+
 
 }
